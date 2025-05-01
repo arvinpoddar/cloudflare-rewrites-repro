@@ -1,15 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export function GET(req: NextRequest) {
-  console.log("Redirect API called, request URL:", req.nextUrl.href);
+const queryParam = "value";
 
-  const secret = req.nextUrl.searchParams.get("secret");
+export function GET(req: NextRequest) {
+  console.log("Echo API route called, request URL:", req.nextUrl.href);
+
+  const secret = req.nextUrl.searchParams.get(queryParam);
   if (!secret) {
     return new Response("Missing secret", { status: 400 });
   }
 
   const destinationUrl = new URL(req.nextUrl);
-  destinationUrl.searchParams.delete("secret");
+  destinationUrl.searchParams.delete(queryParam);
 
   return NextResponse.redirect(destinationUrl, {
     headers: new Headers({

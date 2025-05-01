@@ -20,11 +20,11 @@ const nextConfig: NextConfig = {
           has: [
             {
               type: "query",
-              key: "secret",
+              key: "value",
               value: "(?<secret>.+)",
             },
           ],
-          destination: "/api/redirect?secret=:secret",
+          destination: "/api/redirect",
         },
       ],
     };
