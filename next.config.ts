@@ -24,7 +24,7 @@ const nextConfig: NextConfig = {
               value: "(?<secret>.+)",
             },
           ],
-          destination: "/api/redirect",
+          destination: "/api/redirect?secret=:secret",
         },
       ],
     };
