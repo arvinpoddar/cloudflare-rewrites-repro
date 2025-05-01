@@ -3,7 +3,9 @@ import type { NextConfig } from "next";
 import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
 
 try {
-  initOpenNextCloudflareForDev();
+  if (!process.env.SKIP_OPEN_NEXT_CLOUDFLARE_DEV) {
+    initOpenNextCloudflareForDev();
+  }
 } catch (e) {
   console.error("Error initializing OpenNext Cloudflare for dev:", e);
 }
